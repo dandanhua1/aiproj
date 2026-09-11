@@ -174,5 +174,4 @@ echo -e "  ${YELLOW}下一步: 在 CC Switch 中配置 API Key${NC}"
 echo -e "  ${YELLOW}配置完成后在 VS Code 终端中输入 codex 开始使用${NC}"
 echo "========================================"
 echo ""
-echo "按任意键退出..."
-read -n 1 -s
+echo "安装脚本执行完毕"
