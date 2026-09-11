@@ -1,4 +1,4 @@
-# AI 编程环境一键安装脚本
+﻿# AI 编程环境一键安装脚本
 # 使用方式: irm https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/install.ps1 | iex
 $ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
