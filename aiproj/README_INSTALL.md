@@ -6,7 +6,7 @@
 打开 PowerShell，粘贴以下命令并回车：
 
 ```powershell
-irm https://raw.githubusercontent.com/dandanhua1/aiproj/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/install.ps1 | iex
 ```
 
 > 请将 URL 替换为你实际托管的脚本地址（如 GitHub Raw、Gitee 等）。
