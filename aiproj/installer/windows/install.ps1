@@ -33,6 +33,7 @@ Write-Host ""
 Write-Step "安装 Node.js LTS (Codex 依赖)..."
 Install-Winget "OpenJS.NodeJS.LTS" "Node.js LTS" "node"
 $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [Environment]::GetEnvironmentVariable("PATH","User")
+Start-Sleep -Seconds 5
 
 # 2. npm 国内镜像
 if (Test-Command "npm") {
@@ -76,9 +77,13 @@ try {
 # 8. Codex CLI
 if (Test-Command "npm") {
     Write-Step "安装 Codex CLI..."
-    npm install -g @openai/codex 2>$null
-    if ($LASTEXITCODE -eq 0) { Write-OK "Codex CLI" }
-    else { Write-Host "  [警告] Codex CLI 安装失败" -ForegroundColor Red }
+    $npmOk = $false
+    for ($i = 1; $i -le 3; $i++) {
+        npm install -g @openai/codex 2>$null
+        if ($LASTEXITCODE -eq 0) { $npmOk = $true; break }
+        Write-Host "  [重试] 第 $i 次失败，等待 5 秒..." -ForegroundColor Yellow
+        Start-Sleep -Seconds 5
+    }
 }
 $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [Environment]::GetEnvironmentVariable("PATH","User")
 
